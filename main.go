@@ -6,9 +6,9 @@ import (
 	"os"
 	"strconv"
 
-	"bitbucket.org/sdwolfe32/ipdata/ipdata"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
+	"github.com/s32x/ipdata/ipdata"
 )
 
 var (

@@ -20,7 +20,7 @@ package main
 import (
     "log"
 
-    ipdata "github.com/starboy/ipdata/ipdata"
+    "s32x.com/ipdata"
 )
 
 func main() {
@@ -39,8 +39,8 @@ func main() {
 ## Running with Go
 
 ```
-go get -d github.com/starboy/ipdata/...
-go install github.com/starboy/ipdata
+go get -d s32x.com/ipdata/...
+go install s32x.com/ipdata
 ipdata
 ```
 
