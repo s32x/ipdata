@@ -1,0 +1,26 @@
+version: 2
+jobs:
+  build:
+    working_directory: /go/src/github.com/s32x/ipdata
+    environment:
+      - DOCKER_TAG: s32x/ipdata
+    docker:
+      - image: circleci/golang:1.11.2
+    steps:
+      - checkout
+      - run:
+          name: Run unit tests
+          command: make test
+      - run:
+          name: Build binary for Alpine linux
+          command: env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build
+      - setup_remote_docker
+      - run:
+          name: Build Docker image with binary
+          command: docker build --no-cache -t $DOCKER_TAG .
+      - run:
+          name: Login to DockerHub
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run:
+          name: Push image to DockerHub
+          command: docker push $DOCKER_TAG
