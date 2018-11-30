@@ -1,4 +1,4 @@
-heroku_project = ipdata
+project = ipdata
 
 deps:
 	-rm Gopkg.toml
@@ -12,12 +12,12 @@ run:
 	go run main.go
 build:
 	make deps
-	go build -o bin/ipdata
+	go build -o bin/server
 deploy:
 	make deps
 	make test
-	env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o bin/ipdata
+	env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o bin/server
 	heroku container:login
-	heroku container:push web -a $(heroku_project)
-	heroku container:release web -a $(heroku_project)
+	heroku container:push web -a $(project)
+	heroku container:release web -a $(project)
 	rm ipdata
