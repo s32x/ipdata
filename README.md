@@ -1,9 +1,9 @@
 # IPData
 
-[![CircleCI](https://circleci.com/gh/starboy/ipdata.svg?style=svg)](https://circleci.com/gh/starboy/ipdata)
-[![GoDoc](https://godoc.org/github.com/starboy/ipdata/ipdata?status.svg)](https://godoc.org/github.com/starboy/ipdata/verifier)
+[![CircleCI](https://circleci.com/gh/s32x/ipdata.svg?style=svg)](https://circleci.com/gh/s32x/ipdata)
+[![GoDoc](https://godoc.org/github.com/s32x/ipdata/ipdata?status.svg)](https://godoc.org/github.com/s32x/ipdata/ipdata)
 
-ipdata is a free and open-source ip address lookup system. It combines the results retrieved from multiple maxminddb databases to provide you general geo/isp data for version 4 addresses. The project is available in three forms, the Golang library `ipdata` which can easily be used in your own Go projects, a public API endpoint (more info: https://ipdata.info), and a public Docker image on DockerHub (see: https://hub.docker.com/r/starboy/ipdata/).
+ipdata is a free and open-source ip address lookup system. It combines the results retrieved from multiple maxminddb databases to provide you general geo/isp data for version 4 addresses. The project is available in three forms, the Golang library `ipdata` which can easily be used in your own Go projects, a public API endpoint (more info: https://ipdata.info), and a public Docker image on DockerHub (see: https://hub.docker.com/r/s32x/ipdata/).
 
 ## Using the API (public or self-hosted)
 

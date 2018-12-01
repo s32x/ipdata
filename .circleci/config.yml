@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: /go/src/github.com/s32x/ipdata
+    working_directory: /go/src/s32x.com/ipdata
     environment:
       - DOCKER_TAG: s32x/ipdata
     docker:
@@ -13,7 +13,7 @@ jobs:
           command: make test
       - run:
           name: Build binary for Alpine linux
-          command: env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build
+          command: env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o bin/server
       - setup_remote_docker
       - run:
           name: Build Docker image with binary
