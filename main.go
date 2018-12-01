@@ -38,6 +38,7 @@ func main() {
 		return c.JSON(http.StatusOK, ic.Lookup(c.Param("ip")))
 	})
 
+	// TODO Build a basic front-end interface
 	// // Serve the static web content
 	// e.Static("/", "web")
 	// e.Static("/assets", "web/assets")
