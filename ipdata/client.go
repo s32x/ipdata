@@ -20,8 +20,8 @@ type Client struct {
 	city, asn maxminddb.Reader
 }
 
-// New creates and returns a fully populated ipdata Client
-func New() (*Client, error) {
+// NewClient creates and returns a fully populated ipdata Client
+func NewClient() (*Client, error) {
 	c := &Client{mu: sync.Mutex{}}
 	if err := c.updateReaders(); err != nil {
 		return nil, err

@@ -27,7 +27,7 @@ func main() {
 	e.Use(middleware.CORS())
 
 	// Create the ipdata client
-	ic, err := ipdata.New()
+	ic, err := ipdata.NewClient()
 	if err != nil {
 		log.Fatal(err)
 	}
