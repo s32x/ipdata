@@ -1,4 +1,4 @@
-package ipdata
+package ipdata /* import "s32x.com/ipdata/ipdata" */
 
 const (
 	maxMindDB       = "http://geolite.maxmind.com/download/geoip/database/"

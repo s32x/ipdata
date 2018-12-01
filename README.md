@@ -39,8 +39,7 @@ func main() {
 ## Running with Go
 
 ```
-go get -d s32x.com/ipdata/...
-go install s32x.com/ipdata
+go get -u s32x.com/ipdata
 ipdata
 ```
 

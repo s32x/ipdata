@@ -1,4 +1,4 @@
-package main
+package main /* import "s32x.com/ipdata" */
 
 import (
 	"log"
@@ -8,7 +8,7 @@ import (
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
-	"github.com/s32x/ipdata/ipdata"
+	"s32x.com/ipdata/ipdata"
 )
 
 var (
