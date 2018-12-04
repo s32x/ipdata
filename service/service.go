@@ -1,4 +1,4 @@
-package ipdata /* import "s32x.com/ipdata/ipdata" */
+package service /* import "s32x.com/ipdata/service" */
 
 import (
 	"log"
@@ -6,13 +6,14 @@ import (
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
+	"s32x.com/ipdata/ipdata"
 )
 
 // Start starts the ipdata API service using the passed port for binding the
 // HTTP server to
 func Start(port string) {
 	// Create the ipdata client
-	ic, err := NewClient()
+	ic, err := ipdata.NewClient()
 	if err != nil {
 		log.Fatal(err)
 	}

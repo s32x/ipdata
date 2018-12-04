@@ -3,10 +3,10 @@ package main /* import "s32x.com/ipdata" */
 import (
 	"os"
 
-	"s32x.com/ipdata/ipdata"
+	"s32x.com/ipdata/service"
 )
 
-func main() { ipdata.Start(getenv("PORT", "8080")) }
+func main() { service.Start(getenv("PORT", "8080")) }
 
 // getenv retrieves a variable from the environment and falls back to a passed
 // default value if the key doesn't exist
