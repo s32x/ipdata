@@ -1,4 +1,4 @@
-package service /* import "s32x.com/ipdata/service" */
+package api /* import "s32x.com/ipdata/api" */
 
 import (
 	"log"
@@ -9,8 +9,7 @@ import (
 	"s32x.com/ipdata/ipdata"
 )
 
-// Start starts the ipdata API service using the passed port for binding the
-// HTTP server to
+// Start starts the ipdata API service using the passed params
 func Start(port string) {
 	// Create the ipdata client
 	ic, err := ipdata.NewClient()
