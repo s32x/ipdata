@@ -9,6 +9,7 @@ import (
 // IPData is a struct that contains information about a particular IP address
 type IPData struct {
 	IPAddress   string  `json:"ip_address,omitempty"`
+	Hostname    string  `json:"hostname,omitempty"`
 	ISP         string  `json:"isp,omitempty"`
 	CountryCode string  `json:"country_code,omitempty"`
 	CountryName string  `json:"country_name,omitempty"`
@@ -26,6 +27,12 @@ type IPData struct {
 // Lookup performs the task of retrieving and returning the users IP address
 // info
 func (c *Client) Lookup(ipStr string) *IPData {
+	// Reverse lookup the passed IP to retrieve any hostname that exists
+	var hostname string
+	if hs, _ := net.LookupAddr(ipStr); len(hs) > 0 {
+		hostname = hs[0][:len(hs[0])-1]
+	}
+
 	// Parse the IP address string passed
 	ip := net.ParseIP(ipStr)
 
@@ -42,6 +49,7 @@ func (c *Client) Lookup(ipStr string) *IPData {
 	// Populate and return a fully populated ipdata
 	t := IPData{
 		IPAddress:   ip.String(),
+		Hostname:    hostname,
 		ISP:         asn.Organization,
 		CountryCode: city.Country.ISOCode,
 		CountryName: city.Country.Names["en"],
