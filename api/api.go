@@ -27,7 +27,8 @@ func Start(port string) {
 
 	// Bind all API endpoint handlers
 	e.GET("/", func(c echo.Context) error {
-		return c.Redirect(http.StatusTemporaryRedirect, "/lookup/"+c.RealIP())
+		return c.Redirect(http.StatusTemporaryRedirect,
+			"https://s32x.com/ipdata")
 	})
 	e.GET("/lookup/:ip", func(c echo.Context) error {
 		return c.JSON(http.StatusOK, ic.Lookup(c.Param("ip")))
