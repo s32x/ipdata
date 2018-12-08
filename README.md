@@ -1,26 +1,61 @@
-# ipdata
+<p align="center">
+<img src="logo.png" width="310" height="110" border="0" alt="ipdata">
+<br>
+<a href="https://circleci.com/gh/s32x/ipdata/tree/master"><img src="https://circleci.com/gh/s32x/ipdata/tree/master.svg?style=svg" alt="CircleCI"></a>
+<a href="https://goreportcard.com/report/s32x.com/ipdata"><img src="https://goreportcard.com/badge/s32x.com/ipdata" alt="Go Report Card"></a>
+<a href="https://godoc.org/s32x.com/ipdata/ipdata"><img src="https://godoc.org/s32x.com/ipdata/ipdata?status.svg" alt="GoDoc"></a>
+</p>
 
-[![Circle CI](https://circleci.com/gh/s32x/ipdata/tree/master.svg?style=svg)](https://circleci.com/gh/s32x/ipdata/tree/master)
-[![GoDoc](https://godoc.org/s32x.com/ipdata/ipdata?status.svg)](https://godoc.org/s32x.com/ipdata/ipdata)
+`ipdata` is a free and open-source ip address lookup system. It combines the results retrieved from multiple maxminddb databases to provide you general geo/isp data for version 4 addresses. The project is currently available as a [publicly consumable API](#public-api-usage), an easily importable [Golang package called `ipdata`](#full-go-example) for use in your own Go projects, and a public [Docker image on DockerHub](https://hub.docker.com/r/s32x/ipdata/).
 
-ipdata is a free and open-source ip address lookup system. It combines the results retrieved from multiple maxminddb databases to provide you general geo/isp data for version 4 addresses. The project is available in three forms, the Golang library `ipdata` which can easily be used in your own Go projects, a public API endpoint (more info: https://ipdata.info), and a public Docker image on DockerHub (see: https://hub.docker.com/r/s32x/ipdata/).
+*Please note: The hosted version of ipdata.info does not store ANY ip data that is requested. If this is a real security concern of yours I recommend either using the self hosted Binary/Docker image or importing and utilizing the package yourself.*
 
-### Running with Docker
+## Features
 
+The lookup system is extremely easy to understand and includes only one output format (JSON). What is returned to you is outlined in the below sample response. If you decide to use the package yourself the response struct can be found [here](https://github.com/s32x/ipdata/blob/master/ipdata/lookup.go#L10-L25).
+
+```json
+{
+    "ip_address": "123.456.789.012",
+    "hostname": "example.com",
+    "isp": "ISP LLC Communications",
+    "country_code": "US",
+    "country_name": "United States",
+    "region_code": "CA",
+    "region_name": "California",
+    "city": "San Francisco",
+    "zip_code": "94016",
+    "time_zone": "America/California",
+    "country_code": "US",
+    "country_name": "United States",
+    "geohash": "9ydqy",
+    "latitude": 37.751,
+    "longitude": -97.822,
+    "metro_code": 123,
+}
 ```
-docker run -p 8080:8080 s32x/ipdata
-```
-### Installing
-```
-go get s32x.com/ipdata
-ipdata
-```
+
+## Getting Started
+
 ### Public API Usage
-
 Using the API is very simple. All that's needed to lookup an IP is to send a `GET` request using the below URL schema to our origin.
 ```
 https://ipdata.info/lookup/{ip}
 ```
+
+### Installing
+To start using IPData on your local system, install Go and run `go get`:
+```
+$ go get -u s32x.com/ipdata
+```
+This will install the ipdata binary on your machine.
+
+### Running with Docker
+To start using IPData via Docker, install Docker and run `docker run`:
+```
+$ docker run -p 8080:8080 s32x/ipdata
+```
+This will retrieve the remote DockerHub image and start the service on port 8080.
 
 ## Full Go Example
 
