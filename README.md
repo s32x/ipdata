@@ -6,6 +6,10 @@
 <a href="https://godoc.org/s32x.com/ipdata/ipdata"><img src="https://godoc.org/s32x.com/ipdata/ipdata?status.svg" alt="GoDoc"></a>
 </p>
 
+<p align="center">
+<img src="graphic.png" width="600px" height="392px" alt="ipdata curl">
+</p>
+
 `ipdata` is a free and open-source ip address lookup system. It combines the results retrieved from multiple maxminddb databases to provide you general geo/isp data for version 4 addresses. The project is currently available as a [publicly consumable API](#public-api-usage), an easily importable [Golang package called `ipdata`](#full-go-example) for use in your own Go projects, and a public [Docker image on DockerHub](https://hub.docker.com/r/s32x/ipdata/).
 
 *Please note: The hosted version of ipdata.info does not store ANY ip data that is requested. If this is a real security concern of yours I recommend either using the self hosted Binary/Docker image or importing and utilizing the package yourself.*
