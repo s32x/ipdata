@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-<img src="graphic.png" width="600px" height="392px" alt="ipdata curl">
+<img src="graphic.png" width="650px" height="418px" alt="ipdata curl">
 </p>
 
 `ipdata` is a free and open-source ip address lookup system. It combines the results retrieved from multiple maxminddb databases to provide you general geo/isp data for version 4 addresses. The project is currently available as a [publicly consumable API](#public-api-usage), an easily importable [Golang package called `ipdata`](#full-go-example) for use in your own Go projects, and a public [Docker image on DockerHub](https://hub.docker.com/r/s32x/ipdata/).
