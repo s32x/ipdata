@@ -50,7 +50,7 @@ https://ipdata.info/lookup/{ip}
 ### Installing
 To start using IPData on your local system, install Go and run `go get`:
 ```
-$ go get -u s32x.com/ipdata
+$ go get s32x.com/ipdata
 ```
 This will install the ipdata binary on your machine.
 
