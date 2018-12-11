@@ -20,12 +20,13 @@ func Start(port, env string) {
 	}
 	defer ic.Close()
 
-	// Create a new echo Echo and bind middleware
+	// Create a new echo Echo and bind all middleware
 	e := echo.New()
 	e.HideBanner = true
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 	e.Use(middleware.CORS())
+	e.Use(middleware.Gzip())
 
 	// Perform HTTP redirects and serve the web index if being hosted in prod
 	if strings.Contains(strings.ToLower(env), "prod") {
