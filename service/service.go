@@ -28,7 +28,7 @@ func Start(port, env string) {
 	e.Use(middleware.CORS())
 	e.Use(middleware.Gzip())
 
-	// Perform HTTP redirects and serve the web index if being hosted in prod
+	// Configure HTTP redirects and serve the web index if being hosted in prod
 	if strings.Contains(strings.ToLower(env), "prod") {
 		e.Pre(middleware.HTTPSNonWWWRedirect())
 

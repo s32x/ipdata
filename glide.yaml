@@ -1,0 +1,13 @@
+package: s32x.com/ipdata
+import:
+- package: github.com/gobuffalo/packr
+  subpackages:
+  - v2
+- package: github.com/labstack/echo
+  subpackages:
+  - middleware
+- package: github.com/mmcloughlin/geohash
+- package: github.com/oschwald/maxminddb-golang
+- package: golang.org/x/sync
+  subpackages:
+  - errgroup
