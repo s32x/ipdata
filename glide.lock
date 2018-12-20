@@ -1,5 +1,5 @@
 hash: 0ac1d39304cadb313b855b3cd6c1608179fc3fad6edb437c5542dc388f2e90f6
-updated: 2018-12-14T23:44:00.738418-07:00
+updated: 2018-12-20T02:05:49.085941-07:00
 imports:
 - name: github.com/BurntSushi/toml
   version: 3012a1dbe2e4bd1391d42b32f0577cb7bbc7f005
@@ -56,7 +56,7 @@ imports:
   subpackages:
   - middleware
 - name: github.com/labstack/gommon
-  version: 7fd9f68ece0bcb1a905fac8f1549f0083f71c51b
+  version: 34167a09256a4fcb5d26dd88d02b7b353d86838a
   subpackages:
   - bytes
   - color
@@ -73,17 +73,17 @@ imports:
 - name: github.com/mmcloughlin/geohash
   version: f7f2bcae3294530249c63fcb6fb6d5e83eee4e73
 - name: github.com/oschwald/maxminddb-golang
-  version: ed835b22606182ff576f244643e52b25b7d6c4e7
+  version: 31672ba7a68affbd201a4c909a72a0484fb1a2f0
 - name: github.com/pkg/errors
   version: 059132a15dd08d6704c67711dae0cf35ab991756
 - name: github.com/rogpeppe/go-internal
-  version: dd200567cff41f4d66cc45709a8602403c1beeb6
+  version: d6cee272612b4b5363dd6ccab21ecff102fab540
   subpackages:
   - modfile
   - module
   - semver
 - name: github.com/sirupsen/logrus
-  version: 9f049671f18633e0991c2cbc2bebc81e0b3c402c
+  version: 2067ea4241cec716fbd0ac90f42f339f963bff92
 - name: github.com/spf13/cobra
   version: d2d81d9a96e23f0255397222bb0b4e3165e492dc
 - name: github.com/spf13/pflag
@@ -103,17 +103,18 @@ imports:
   subpackages:
   - errgroup
 - name: golang.org/x/sys
-  version: 4d1cda033e0619309c606fc686de3adcf599539e
+  version: 074acd46bca67915925527c07849494d115e7c43
   subpackages:
   - unix
   - windows
 - name: golang.org/x/tools
-  version: 3c39ce7b61056afe4473b651789da5f89d4aeb20
+  version: 92cdcd90bf52150d9c63b7a8432ab7b10fc92385
   subpackages:
   - go/ast/astutil
   - go/gcexportdata
   - go/internal/cgo
   - go/internal/gcimporter
+  - go/internal/packagesdriver
   - go/packages
   - imports
   - internal/fastwalk
