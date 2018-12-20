@@ -26,6 +26,7 @@ func Start(port, env string) {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 	e.Use(middleware.CORS())
+	e.Use(middleware.Secure())
 	e.Use(middleware.Gzip())
 
 	// Configure HTTP redirects and serve the web index if being hosted in prod
