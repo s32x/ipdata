@@ -1,5 +1,5 @@
 hash: 0ac1d39304cadb313b855b3cd6c1608179fc3fad6edb437c5542dc388f2e90f6
-updated: 2018-12-20T02:05:49.085941-07:00
+updated: 2018-12-26T10:33:58.255732-05:00
 imports:
 - name: github.com/BurntSushi/toml
   version: 3012a1dbe2e4bd1391d42b32f0577cb7bbc7f005
@@ -87,7 +87,7 @@ imports:
 - name: github.com/spf13/cobra
   version: d2d81d9a96e23f0255397222bb0b4e3165e492dc
 - name: github.com/spf13/pflag
-  version: 916c5bf2d89aff6fd3e10e7811337218dfa81cb5
+  version: 24fa6976df40757dce6aea913e7b81ade90530e1
 - name: github.com/valyala/bytebufferpool
   version: cdfbe9377474227bb42120c1e22fd4433e7f69bf
 - name: github.com/valyala/fasttemplate
@@ -99,16 +99,16 @@ imports:
   - acme/autocert
   - ssh/terminal
 - name: golang.org/x/sync
-  version: 42b317875d0fa942474b76e1b46a6060d720ae6e
+  version: 37e7f081c4d4c64e13b10787722085407fe5d15f
   subpackages:
   - errgroup
 - name: golang.org/x/sys
-  version: 074acd46bca67915925527c07849494d115e7c43
+  version: b4a75ba826a64a70990f11a225237acd6ef35c9f
   subpackages:
   - unix
   - windows
 - name: golang.org/x/tools
-  version: 92cdcd90bf52150d9c63b7a8432ab7b10fc92385
+  version: d00ac6d27372a4273825635281f2dc360d4be563
   subpackages:
   - go/ast/astutil
   - go/gcexportdata
