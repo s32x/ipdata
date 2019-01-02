@@ -29,6 +29,12 @@ func NewClient() (*Client, error) {
 	return c, nil
 }
 
+// Close performs the final task of closing the maxminddb Readers
+func (c *Client) Close() {
+	c.city.Close()
+	c.asn.Close()
+}
+
 // updateReaders concurrently retrieves and populates the databases using the
 // urls on the Client
 func (c *Client) updateReaders() error {
@@ -40,12 +46,6 @@ func (c *Client) updateReaders() error {
 	g.Go(readMMDB(geoLite2City, &c.city))
 	g.Go(readMMDB(geoLite2ASN, &c.asn))
 	return g.Wait()
-}
-
-// Close performs the final task of closing the maxminddb Readers
-func (c *Client) Close() {
-	c.city.Close()
-	c.asn.Close()
 }
 
 // readMMDB takes a compressed MaxMind database URL, downloads, decompresses,

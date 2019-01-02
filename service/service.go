@@ -35,9 +35,9 @@ func Start(port, env string) {
 	}
 
 	// Bind remaining middleware
-	e.Pre(middleware.Secure())
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
+	e.Pre(middleware.Secure())
 	e.Use(middleware.Gzip())
 
 	// Serve the static web content on the base echo instance
