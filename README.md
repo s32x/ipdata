@@ -1,5 +1,5 @@
 <p align="center">
-<img src="service/web/assets/logo.png" width="310" height="110" border="0" alt="ipdata">
+<img src="service/static/assets/logo.png" width="310" height="110" border="0" alt="ipdata">
 <br>
 <a href="https://circleci.com/gh/s32x/ipdata/tree/master"><img src="https://circleci.com/gh/s32x/ipdata/tree/master.svg?style=svg" alt="CircleCI"></a>
 <a href="https://goreportcard.com/report/s32x.com/ipdata"><img src="https://goreportcard.com/badge/s32x.com/ipdata" alt="Go Report Card"></a>
@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-<img src="service/web/assets/graphic.png" width="650px" height="418px" alt="ipdata curl">
+<img src="service/static/assets/graphic.png" width="650px" height="418px" alt="ipdata curl">
 </p>
 
 `ipdata` is a free and open-source ip address lookup system. It combines the results retrieved from multiple maxminddb databases to provide you general geo/isp data for version 4 addresses. The project is currently available as a [publicly consumable API](#public-api-usage), an easily importable [Golang package called `ipdata`](#full-go-example) for use in your own Go projects, and a public [Docker image on DockerHub](https://hub.docker.com/r/s32x/ipdata/).
@@ -88,7 +88,7 @@ func main() {
 The BSD 3-clause License
 ========================
 
-Copyright (c) 2018, Steven Wolfe. All rights reserved.
+Copyright (c) 2019, Steven Wolfe. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:

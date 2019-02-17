@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"strings"
 
-	packr "github.com/gobuffalo/packr/v2"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	"s32x.com/ipdata/ipdata"
@@ -41,8 +40,7 @@ func Start(port, env string) {
 	e.Use(middleware.Gzip())
 
 	// Serve the static web content on the base echo instance
-	wb := packr.New("web box", "./web")
-	e.GET("*", echo.WrapHandler(http.FileServer(wb)))
+	e.Static("*", "./service/static")
 
 	// Create the API group with separate middlewares
 	api := e.Group("/lookup")
