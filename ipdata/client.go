@@ -6,7 +6,7 @@ import (
 	"compress/gzip"
 	"errors"
 	"io"
-	"net/http"
+	"os"
 	"strings"
 	"sync"
 
@@ -21,9 +21,9 @@ type Client struct {
 }
 
 // NewClient creates and returns a fully populated ipdata Client
-func NewClient() (*Client, error) {
+func NewClient(cityPath, asnPath string) (*Client, error) {
 	c := &Client{mu: sync.Mutex{}}
-	if err := c.updateReaders(); err != nil {
+	if err := c.updateReaders(cityPath, asnPath); err != nil {
 		return nil, err
 	}
 	return c, nil
@@ -37,30 +37,30 @@ func (c *Client) Close() {
 
 // updateReaders concurrently retrieves and populates the databases using the
 // urls on the Client
-func (c *Client) updateReaders() error {
+func (c *Client) updateReaders(cityPath, asnPath string) error {
 	c.mu.Lock()
 	defer c.mu.Unlock()
 
 	// Concurrently retrieve and populate the mmdb databases
 	var g errgroup.Group
-	g.Go(readMMDB(geoLite2City, &c.city))
-	g.Go(readMMDB(geoLite2ASN, &c.asn))
+	g.Go(readMMDB(cityPath, &c.city))
+	g.Go(readMMDB(asnPath, &c.asn))
 	return g.Wait()
 }
 
-// readMMDB takes a compressed MaxMind database URL, downloads, decompresses,
-// and generates a maxmindb.Reader
-func readMMDB(url string, out *maxminddb.Reader) func() error {
+// readMMDB takes a compressed MaxMind database at the given path, decompresses
+// it and generates a maxmindb.Reader
+func readMMDB(path string, out *maxminddb.Reader) func() error {
 	return func() error {
-		// Retrieve the compressed database from the url
-		res, err := http.Get(url)
+		// Open the database file at the passed path
+		file, err := os.Open(path)
 		if err != nil {
 			return err
 		}
-		defer res.Body.Close()
+		defer file.Close()
 
-		// GZIP read the response body
-		gzr, err := gzip.NewReader(res.Body)
+		// GZIP read file
+		gzr, err := gzip.NewReader(file)
 		if err != nil {
 			return err
 		}
