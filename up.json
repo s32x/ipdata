@@ -1,0 +1,12 @@
+{
+  "name": "ipdata",
+  "profile": "default",
+  "regions": [
+    "us-east-1"
+  ],
+  "stages": {
+    "production": {
+      "domain": "ipdata.info"
+    }
+  }
+}
