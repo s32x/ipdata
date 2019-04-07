@@ -19,4 +19,4 @@ test:
 	go test ./...
 
 deploy: deps db test
-	up
+	up production
