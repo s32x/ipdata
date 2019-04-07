@@ -9,5 +9,8 @@
       "domain": "ipdata.info",
       "zone": false
     }
+  },
+  "error_pages": {
+    "disable": true
   }
 }
