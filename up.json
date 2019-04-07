@@ -6,7 +6,8 @@
   ],
   "stages": {
     "production": {
-      "domain": "ipdata.info"
+      "domain": "ipdata.info",
+      "zone": false
     }
   }
 }
