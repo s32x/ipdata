@@ -2,6 +2,7 @@ package ipdata /* import "s32x.com/ipdata/ipdata" */
 
 import (
 	"net"
+	"strings"
 
 	"github.com/mmcloughlin/geohash"
 )
@@ -30,7 +31,7 @@ func (c *Client) Lookup(ipStr string) *IPData {
 	// Reverse lookup the passed IP to retrieve any hostname that exists
 	var hostname string
 	if hs, _ := net.LookupAddr(ipStr); len(hs) > 0 {
-		hostname = hs[0][:len(hs[0])-1]
+		hostname = strings.TrimSuffix(hs[0], ".")
 	}
 
 	// Parse the IP address string passed
