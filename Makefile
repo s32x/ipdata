@@ -19,4 +19,6 @@ test:
 	go test ./...
 
 deploy: deps db test
-	up production
+	-up stack plan
+	-up stack apply
+	up deploy production

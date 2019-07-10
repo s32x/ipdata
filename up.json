@@ -1,6 +1,9 @@
 {
   "name": "ipdata",
   "profile": "default",
+  "lambda": {
+    "warm": true
+  },
   "regions": [
     "us-east-1"
   ],
