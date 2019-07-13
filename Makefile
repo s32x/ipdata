@@ -19,6 +19,7 @@ test:
 	go test ./...
 
 deploy: deps db test
+	up prune -s production -r 2
 	-up stack plan
 	-up stack apply
 	up deploy production
