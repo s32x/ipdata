@@ -1,4 +1,4 @@
-package ipdata /* import "s32x.com/ipdata/ipdata" */
+package ipdata
 
 // ASN is the query response for ASN lookups
 type ASN struct {

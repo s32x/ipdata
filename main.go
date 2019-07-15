@@ -1,4 +1,4 @@
-package main /* import "s32x.com/ipdata" */
+package main
 
 import (
 	"log"

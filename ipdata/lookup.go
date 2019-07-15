@@ -1,4 +1,4 @@
-package ipdata /* import "s32x.com/ipdata/ipdata" */
+package ipdata
 
 import (
 	"net"
