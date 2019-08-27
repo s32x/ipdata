@@ -2,8 +2,7 @@
   "name": "ipdata",
   "profile": "default",
   "lambda": {
-    "warm": true,
-    "warm_count": 5
+    "memory": 128
   },
   "regions": [
     "us-east-1"
