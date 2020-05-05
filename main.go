@@ -43,6 +43,9 @@ func main() {
 	e.Static("*", "./static")
 
 	// Bind all API endpoint handlers
+	e.GET("/lookup", func(c echo.Context) error {
+		return c.JSON(http.StatusOK, ic.Lookup(c.RealIP()))
+	})
 	e.GET("/lookup/:ip", func(c echo.Context) error {
 		return c.JSON(http.StatusOK, ic.Lookup(c.Param("ip")))
 	})
