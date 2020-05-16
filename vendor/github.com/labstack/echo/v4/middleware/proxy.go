@@ -92,15 +92,14 @@ func proxyRaw(t *ProxyTarget, c echo.Context) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		in, _, err := c.Response().Hijack()
 		if err != nil {
-			c.Error(fmt.Errorf("proxy raw, hijack error=%v, url=%s", t.URL, err))
+			c.Set("_error", fmt.Sprintf("proxy raw, hijack error=%v, url=%s", t.URL, err))
 			return
 		}
 		defer in.Close()
 
 		out, err := net.Dial("tcp", t.URL.Host)
 		if err != nil {
-			he := echo.NewHTTPError(http.StatusBadGateway, fmt.Sprintf("proxy raw, dial error=%v, url=%s", t.URL, err))
-			c.Error(he)
+			c.Set("_error", echo.NewHTTPError(http.StatusBadGateway, fmt.Sprintf("proxy raw, dial error=%v, url=%s", t.URL, err)))
 			return
 		}
 		defer out.Close()
@@ -108,8 +107,7 @@ func proxyRaw(t *ProxyTarget, c echo.Context) http.Handler {
 		// Write header
 		err = r.Write(out)
 		if err != nil {
-			he := echo.NewHTTPError(http.StatusBadGateway, fmt.Sprintf("proxy raw, request header copy error=%v, url=%s", t.URL, err))
-			c.Error(he)
+			c.Set("_error", echo.NewHTTPError(http.StatusBadGateway, fmt.Sprintf("proxy raw, request header copy error=%v, url=%s", t.URL, err)))
 			return
 		}
 
@@ -123,7 +121,7 @@ func proxyRaw(t *ProxyTarget, c echo.Context) http.Handler {
 		go cp(in, out)
 		err = <-errCh
 		if err != nil && err != io.EOF {
-			c.Logger().Errorf("proxy raw, copy body error=%v, url=%s", t.URL, err)
+			c.Set("_error", fmt.Errorf("proxy raw, copy body error=%v, url=%s", t.URL, err))
 		}
 	})
 }
@@ -233,7 +231,9 @@ func ProxyWithConfig(config ProxyConfig) echo.MiddlewareFunc {
 			}
 
 			// Fix header
-			if req.Header.Get(echo.HeaderXRealIP) == "" {
+			// Basically it's not good practice to unconditionally pass incoming x-real-ip header to upstream.
+			// However, for backward compatibility, legacy behavior is preserved unless you configure Echo#IPExtractor.
+			if req.Header.Get(echo.HeaderXRealIP) == "" || c.Echo().IPExtractor != nil {
 				req.Header.Set(echo.HeaderXRealIP, c.RealIP())
 			}
 			if req.Header.Get(echo.HeaderXForwardedProto) == "" {
@@ -250,6 +250,9 @@ func ProxyWithConfig(config ProxyConfig) echo.MiddlewareFunc {
 			case req.Header.Get(echo.HeaderAccept) == "text/event-stream":
 			default:
 				proxyHTTP(tgt, c, config).ServeHTTP(res, req)
+			}
+			if e, ok := c.Get("_error").(error); ok {
+				err = e
 			}
 
 			return

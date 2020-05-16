@@ -1,8 +1,5 @@
 package geohash
 
-// invalid is a placeholder for invalid character decodings.
-const invalid = 0xff
-
 // encoding encapsulates an encoding defined by a given base32 alphabet.
 type encoding struct {
 	encode string
@@ -15,17 +12,12 @@ func newEncoding(encoder string) *encoding {
 	e := new(encoding)
 	e.encode = encoder
 	for i := 0; i < len(e.decode); i++ {
-		e.decode[i] = invalid
+		e.decode[i] = 0xff
 	}
 	for i := 0; i < len(encoder); i++ {
 		e.decode[encoder[i]] = byte(i)
 	}
 	return e
-}
-
-// ValidByte reports whether b is part of the encoding.
-func (e *encoding) ValidByte(b byte) bool {
-	return e.decode[b] != invalid
 }
 
 // Decode string into bits of a 64-bit word. The string s may be at most 12
