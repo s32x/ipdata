@@ -3,9 +3,11 @@ init:
 	GO111MODULE=on go mod init
 
 deps:
-	-rm -rf ./vendor go.sum
-	GO111MODULE=on go mod tidy
-	GO111MODULE=on go mod vendor
+	-rm -rf ./vendor go.mod go.sum
+	go clean --modcache
+	go mod init
+	go mod tidy
+	go mod vendor
 
 db:
 	-rm -rf ./db

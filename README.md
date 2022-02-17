@@ -1,9 +1,8 @@
 <p align="center">
 <img src="static/assets/logo.png" width="310" height="110" border="0" alt="ipdata">
 <br>
-<a href="https://circleci.com/gh/s32x/ipdata/tree/master"><img src="https://circleci.com/gh/s32x/ipdata/tree/master.svg?style=svg" alt="CircleCI"></a>
-<a href="https://goreportcard.com/report/s32x.com/ipdata"><img src="https://goreportcard.com/badge/s32x.com/ipdata" alt="Go Report Card"></a>
-<a href="https://godoc.org/s32x.com/ipdata/ipdata"><img src="https://godoc.org/s32x.com/ipdata/ipdata?status.svg" alt="GoDoc"></a>
+<a href="https://goreportcard.com/report/github.com/s32x/ipdata"><img src="https://goreportcard.com/badge/github.com/s32x/ipdata" alt="Go Report Card"></a>
+<a href="https://godoc.org/github.com/s32x/ipdata/ipdata"><img src="https://godoc.org/github.com/s32x/ipdata/ipdata?status.svg" alt="GoDoc"></a>
 </p>
 
 <p align="center">
@@ -50,7 +49,7 @@ https://ipdata.info/lookup/{ip}
 ### Installing
 To start using IPData on your local system, install Go and run `go get`:
 ```
-$ go get s32x.com/ipdata
+$ go get github.com/s32x/ipdata
 ```
 This will install the ipdata binary on your machine.
 
@@ -69,7 +68,7 @@ package main
 import (
     "log"
 
-    "s32x.com/ipdata/ipdata"
+    "github.com/s32x/ipdata/ipdata"
 )
 
 func main() {
@@ -88,7 +87,7 @@ func main() {
 The BSD 3-clause License
 ========================
 
-Copyright (c) 2020, s32x. All rights reserved.
+Copyright (c) 2022, s32x. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
